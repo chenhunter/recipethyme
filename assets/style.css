@@ -1,14 +1,69 @@
 h1 {
 	font-family: 'Courier New';
-	text-align: center
+	text-align: center;
+	font-size: 40px;
+	line-height: 0em;
 }
 
-h2, p, button {
-	font-family: 'Helvetica'
+.pic {
+	line-height: 0em;
+}
+
+h2, p, div, button, #btnFind, .btnRemove, #btnAdd, #text {
+	font-family: 'Helvetica';
+}
+
+h2, p, div, button {
+	font-size: 18px;
+}
+
+h2, p, div, button {
+	text-align: center;
+}
+
+div {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button, #btnFind, .btnRemove, #btnAdd {
+	border-radius: 8px;
+}
+
+button, #btnFind, #btnAdd {
+	font-size: 16px;
+}
+
+button, #btnFind {
+	background-color: #7fb414;
+	height: 40px;
+	width: 125px;
+}
+
+.btnRemove, #btnAdd {
+	background-color: #a0e418;
+}
+
+.btnRemove {
+	height: 20px;
+	font-size: 14px;
+}
+
+#btnAdd {
+	height: 24px;
+	width: 50px;
+}
+
+h2 {
+	font-size: 25px;
 }
 
 .pic {
 	height: 100px;
-	width: 100px;
+	width: 125px;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 

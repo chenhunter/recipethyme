@@ -3,13 +3,14 @@
 	<head>
 		<title>RecipeThyme</title>
 		<meta charset='utf-8'>
+		<link rel="stylesheet" type="text/css" href="/assets/style.css"/>
 	</head>
 	<body>
 		<div id="contentarea">
 			<h1>Recipe Thyme</h1>
-			<img class="pic" src="/assets/Logo.png" alt="RecipeThymeLogo.png"/>
+			<img class="pic" src="/assets/logo.png" alt="RecipeThymeLogo.png"/>
 		
-			<h2>Here are your recipes</h2>
+			<h2>Recipes</h2>
 			<div id="items">
 				{% for key,recipe in recipes.items() %}
 					<div id="{{key}}" style="overflow: auto; width: 100vh;">

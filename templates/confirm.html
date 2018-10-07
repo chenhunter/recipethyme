@@ -4,7 +4,7 @@
 		<title>RecipeThyme</title>
 		<meta charset='utf-8'>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<link rel="stylesheet" type="text/css" href="/assets/style.css"/>
 		<script>
 			function submit(){
 				item_divs = document.getElementsByClassName('item');
@@ -46,6 +46,7 @@
 				var delete_button = document.createElement('INPUT');
 				delete_button.setAttribute("type", "button");
 				delete_button.value = "-";
+				delete_button.className = "btnRemove";
 				delete_button.onclick = function(){
 					div = this.parentNode.parentNode;
 					div.parentNode.removeChild(div);
@@ -57,17 +58,19 @@
 				outerDiv.appendChild(br);
 				var items = document.getElementById('items');
 				items.appendChild(outerDiv);
+				document.getElementById('text').value = "";
 			}
 		</script>
 	</head>
 	<body>
 		<div id="contentarea">
 			<h1>Recipe Thyme</h1>
-			<img class="pic" src="/assets/Logo.png" alt="RecipeThymeLogo.png"/>
+			<img class="pic" src="/assets/logo.png" alt="RecipeThymeLogo.png"/>
 		
 			<h2>
-				Please confirm and check the Ingredients
+				Ingredients
 			</h2>
+			<p>The ingredients below are what were detected in the picture. Please confirm that they are correct. Tap the minus button to the right of an ingredient to remove it if it is not correct or no longer needed.</p><br>
 			<div id="items">
 				{% for key,item in items.items() %}
 					<div id="{{key}}" style="overflow: auto; width: 30vh;">
@@ -75,19 +78,21 @@
 							{{item}}
 						</div>
 						<div style="float:right;">
-							<input type="button" value="-" onclick="remove('{{key}}');"></input>
+							<input class="btnRemove" type="button" value="-" onclick="remove('{{key}}');"></input>
 						</div>
 						<br/>
 					</div>
 				{% endfor %}
 			</div>
+			<br>
 			<hr/>
 			<div>
 				<input id="text" placeholder="Add an ingredient" type="text"></input>
-				<input type="button" value="Add" onclick="add();"></input>
+				<input id="btnAdd" type="button" value="Add" onclick="add();"></input>
 			</div>
 			<hr/>
-			<input type="button" value="Submit" onclick="submit();"></input>
+			<br>
+			<input id="btnFind" type="button" value="Find Recipes" onclick="submit();"></input>
 		</div>
 	</body>
 </html>
