@@ -4,6 +4,7 @@
 		<title>RecipeThyme</title>
 		<meta charset='utf-8'>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
 		<script>
 			function submit(){
 				item_divs = document.getElementsByClassName('item');
@@ -61,9 +62,12 @@
 	</head>
 	<body>
 		<div id="contentarea">
-			<h1>
+			<h1>Recipe Thyme</h1>
+			<img class="pic" src="/assets/Logo.png" alt="RecipeThymeLogo.png"/>
+		
+			<h2>
 				Please confirm and check the Ingredients
-			</h1>
+			</h2>
 			<div id="items">
 				{% for key,item in items.items() %}
 					<div id="{{key}}" style="overflow: auto; width: 30vh;">

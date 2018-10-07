@@ -5,6 +5,8 @@ threadsafe: true
 instance_class: F4
 
 handlers:
+- url: /assets
+  static_dir: assets
 - url: /.*
   script: app.app
   secure: always

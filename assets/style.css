@@ -1,0 +1,14 @@
+h1 {
+	font-family: 'Courier New';
+	text-align: center
+}
+
+h2, p, button {
+	font-family: 'Helvetica'
+}
+
+.pic {
+	height: 100px;
+	width: 100px;
+}
+

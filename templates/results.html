@@ -6,9 +6,10 @@
 	</head>
 	<body>
 		<div id="contentarea">
-			<h1>
-				Here are your recipes
-			</h1>
+			<h1>Recipe Thyme</h1>
+			<img class="pic" src="/assets/Logo.png" alt="RecipeThymeLogo.png"/>
+		
+			<h2>Here are your recipes</h2>
 			<div id="items">
 				{% for key,recipe in recipes.items() %}
 					<div id="{{key}}" style="overflow: auto; width: 100vh;">
