@@ -22,6 +22,41 @@
 					window.location = '/results?recipes='+escape(JSON.stringify(respJSON));
 				});
 			}
+			
+			function remove(key){
+				div = document.getElementById(key);
+				div.parentNode.removeChild(div);
+			}
+			
+			function add(){
+				num = document.getElementsByClassName('item').length;
+				text = document.getElementById('text').value;
+				var outerDiv = document.createElement('DIV');
+				outerDiv.id = num +'';
+				outerDiv.style.overflow = "auto";
+				outerDiv.style.width = "30vh";
+				var item = document.createElement('DIV');
+				item.style.float = "left";
+				item.className = "item";
+				item.innerHTML = text;
+				outerDiv.appendChild(item);
+				var delete_button_div = document.createElement('DIV');
+				delete_button_div.style.float = "right";
+				var delete_button = document.createElement('INPUT');
+				delete_button.setAttribute("type", "button");
+				delete_button.value = "-";
+				delete_button.onclick = function(){
+					div = this.parentNode.parentNode;
+					div.parentNode.removeChild(div);
+				};
+				num++;
+				delete_button_div.appendChild(delete_button);
+				outerDiv.appendChild(delete_button_div);
+				var br = document.createElement('BR');
+				outerDiv.appendChild(br);
+				var items = document.getElementById('items');
+				items.appendChild(outerDiv);
+			}
 		</script>
 	</head>
 	<body>
@@ -36,16 +71,16 @@
 							{{item}}
 						</div>
 						<div style="float:right;">
-							<button>-</button>
+							<input type="button" value="-" onclick="remove('{{key}}');"></input>
 						</div>
+						<br/>
 					</div>
-					<br/>
 				{% endfor %}
 			</div>
 			<hr/>
 			<div>
-				<input placeholder="Add an ingredient" type="text"></input>
-				<button>Add</button>
+				<input id="text" placeholder="Add an ingredient" type="text"></input>
+				<input type="button" value="Add" onclick="add();"></input>
 			</div>
 			<hr/>
 			<input type="button" value="Submit" onclick="submit();"></input>
