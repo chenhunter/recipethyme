@@ -1,0 +1,20 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+
+instance_class: F4
+
+handlers:
+- url: /.*
+  script: app.app
+  secure: always
+
+libraries:
+- name: ssl
+  version: latest
+- name: grpcio
+  version: latest
+
+env_variables:
+  CLARIFAI_API_KEY: 'f8af740cf13948e2a6667b690274a4db'
+  GAE_USE_SOCKETS_HTTPLIB: 'true'

@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Recipeanut</title>
+		<meta charset='utf-8'>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script>
+			
+		</script>
+	</head>
+	<body>
+		<div id="contentarea">
+			<h1>
+				Please confirm and check the Ingredients
+			</h1>
+			<div id="items">
+				{% for key,item in items.items() %}
+					<div id="{{id}}" style="overflow: auto; width: 30vh;">
+						<div style="float:left;">
+							{{item}}
+						</div>
+						<div style="float:right;">
+							<button>-</button>
+						</div>
+					</div>
+					<br/>
+				{% endfor %}
+			</div>
+			<hr/>
+			<div>
+				<input placeholder="Add an ingredient" type="text"></input>
+				<button>Add</button>
+			</div>
+		</div>
+	</body>
+</html>

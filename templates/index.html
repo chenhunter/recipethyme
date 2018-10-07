@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Recipeanut</title>
+		<meta charset='utf-8'>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script>
+			(function() {
+			  var width = 640;
+			  var height = 0;
+			  var streaming = false;
+			  var video = null;
+			  var canvas = null;
+			  var photo = null;
+			  var startbutton = null;
+
+			  function startup() {
+				video = document.getElementById('video');
+				canvas = document.getElementById('canvas');
+				startbutton = document.getElementById('startbutton');
+
+				navigator.mediaDevices.getUserMedia({ video: {facingMode: "environment"} })
+				  .then(stream => video.srcObject = stream)
+				  .catch(e => log(e.name + ": "+ e.message));
+
+				var log = msg => div.innerHTML += msg + "<br>";
+
+				video.addEventListener('canplay', function(ev){
+					  if (!streaming) {
+						height = video.videoHeight / (video.videoWidth/width);
+					  
+						// Firefox currently has a bug where the height can't be read from
+						// the video, so we will make assumptions if this happens.
+					  
+						if (isNaN(height)) {
+						  height = width / (4/3);
+						}
+					  
+						video.setAttribute('width', width);
+						video.setAttribute('height', height);
+						canvas.setAttribute('width', width);
+						canvas.setAttribute('height', height);
+						streaming = true;
+					  }
+				}, false);
+				
+				startbutton.addEventListener('click', function(ev){
+				  takepicture();
+				  ev.preventDefault();
+				}, false);
+				
+				clearphoto();
+			  }
+
+			  // Fill the photo with an indication that none has been
+			  // captured.
+
+			  function clearphoto() {
+				var context = canvas.getContext('2d');
+				context.fillStyle = "#AAA";
+				context.fillRect(0, 0, canvas.width, canvas.height);
+
+				var data = canvas.toDataURL('image/png');
+			  }
+			  
+			  // Capture a photo by fetching the current contents of the video
+			  // and drawing it into a canvas, then converting that to a PNG
+			  // format data URL. By drawing it on an offscreen canvas and then
+			  // drawing that to the screen, we can change its size and/or apply
+			  // other changes before drawing it.
+
+			  function takepicture() {
+				var context = canvas.getContext('2d');
+				if (width && height) {
+				  canvas.width = width;
+				  canvas.height = height;
+				  context.drawImage(video, 0, 0, width, height);
+				
+				  var dataURL = canvas.toDataURL('image/png');
+				  var image = JSON.stringify(dataURL);
+				  fetch('/api/request', {
+					method: 'POST',
+					headers: {
+						'name': 'photo.png',
+						'Content-Type': 'application/json'
+					},
+					body: image,
+				  }).then((resp) => resp.json())
+				  .then(respJSON => {
+					console.log(respJSON);
+					window.location = '/confirm?items='+JSON.stringify(respJSON);
+				  });
+				} else {
+				  clearphoto();
+				}
+			  }
+
+			  // Set up our event listener to run the startup process
+			  // once loading is complete.
+			  window.addEventListener('load', startup, false);
+			})();
+		</script>
+	</head>
+	<body>
+		<div class="contentarea">
+			<h1>
+				Instructions
+			</h1>
+			<p>
+				Take a picture of some ingredients. We will give you recipes for dishes you can make.
+			</p>
+			<div class="camera">
+				<button id="startbutton" height="200" width="200">Take photo</button> 
+				<br/>
+				<video id="video" width="160" height="120" autoplay></video><br>
+				<div id="div"></div>
+			</div>
+			<canvas id="canvas">
+			</canvas>
+		</div>
+	</body>
+</html>
