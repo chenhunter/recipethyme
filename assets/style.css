@@ -1,20 +1,30 @@
 h1 {
 	font-family: 'Courier New';
 	text-align: center;
-	font-size: 40px;
-	line-height: 0em;
+	font-size: 100px;
+	line-height: 1em;
+	margin-bottom: 0px;
+}
+
+h2 {
+	font-size: 70px;
 }
 
 .pic {
-	line-height: 0em;
+	height: 200px;
+	width: 250px;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 0em;
 }
 
 h2, p, div, button, #btnFind, .btnRemove, #btnAdd, #text {
 	font-family: 'Helvetica';
 }
 
-h2, p, div, button {
-	font-size: 18px;
+p, div, button, #btnFind, #btnAdd, #text {
+	font-size: 50px;
 }
 
 h2, p, div, button {
@@ -27,43 +37,68 @@ div {
     margin-right: auto;
 }
 
-button, #btnFind, .btnRemove, #btnAdd {
-	border-radius: 8px;
-}
-
-button, #btnFind, #btnAdd {
-	font-size: 16px;
+button, #btnFind, #btnAdd, #text {
+	border-radius: 20px;
 }
 
 button, #btnFind {
 	background-color: #7fb414;
-	height: 40px;
-	width: 125px;
+	height: 100px;
+	width: 350px;
 }
 
-.btnRemove, #btnAdd {
+button, #btnAdd, .btnRemove, #btnFind {
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#btnAdd {
 	background-color: #a0e418;
 }
 
 .btnRemove {
-	height: 20px;
-	font-size: 14px;
+	background-color: #d12733;
+	border-width: 5px;
+	border-radius: 40px;
+	border-color: #ffffff;
+	color: #ffffff;
+	height: 70px;
+	width: 70px;
+	font-size: 35px;
+	font-weight: bold;
+	margin-top: 15px;
+	margin-right: 15px;
 }
 
 #btnAdd {
-	height: 24px;
-	width: 50px;
+	height: 80px;
+	width: 250px;
 }
 
-h2 {
-	font-size: 25px;
+#items {
+	border-radius: 50px;
+	width: 600px;
+	background-color: #a0e418;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-.pic {
-	height: 100px;
-	width: 125px;
-	display: block;
-    margin-left: auto;
-    margin-right: auto;
+.itemContainer { 
+	background-color: #a0e418;
+	-webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    height: 100px;
+    border-radius: 50px;
 }
 
+.item {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 35px;
+}
+
+.itemContainer:hover {
+    background-color: #7fb414;
+}
+
+#text {
+	padding: 10px;
+}

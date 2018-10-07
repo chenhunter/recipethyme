@@ -35,7 +35,8 @@
 				var outerDiv = document.createElement('DIV');
 				outerDiv.id = num +'';
 				outerDiv.style.overflow = "auto";
-				outerDiv.style.width = "30vh";
+				outerDiv.style.width = "600px";
+				outerDiv.className = "itemContainer"
 				var item = document.createElement('DIV');
 				item.style.float = "left";
 				item.className = "item";
@@ -45,7 +46,7 @@
 				delete_button_div.style.float = "right";
 				var delete_button = document.createElement('INPUT');
 				delete_button.setAttribute("type", "button");
-				delete_button.value = "-";
+				delete_button.value = "\u2014";
 				delete_button.className = "btnRemove";
 				delete_button.onclick = function(){
 					div = this.parentNode.parentNode;
@@ -70,15 +71,15 @@
 			<h2>
 				Ingredients
 			</h2>
-			<p>The ingredients below are what were detected in the picture. Please confirm that they are correct. Tap the minus button to the right of an ingredient to remove it if it is not correct or no longer needed.</p><br>
+			<p>The ingredients below are what were detected in the picture. Please confirm that they are correct. Tap the minus button to the right of an ingredient to remove it if it is not correct or no longer needed.</p>
 			<div id="items">
 				{% for key,item in items.items() %}
-					<div id="{{key}}" style="overflow: auto; width: 30vh;">
+					<div id="{{key}}" class="itemContainer" style="overflow: auto; width: 600px;">
 						<div class="item" style="float:left;">
 							{{item}}
 						</div>
 						<div style="float:right;">
-							<input class="btnRemove" type="button" value="-" onclick="remove('{{key}}');"></input>
+							<input class="btnRemove" type="button" value="&#8212" onclick="remove('{{key}}');"></input>
 						</div>
 						<br/>
 					</div>

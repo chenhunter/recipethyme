@@ -11,20 +11,17 @@
 			<img class="pic" src="/assets/logo.png" alt="RecipeThymeLogo.png"/>
 		
 			<h2>Recipes</h2>
-			<div id="items">
+			<div id="recipes">
 				{% for key,recipe in recipes.items() %}
 					<div id="{{key}}" style="overflow: auto; width: 100vh;">
-						<div style="float:left;">
-							{{key}}
-						</div>
-						<br/>
-						<div style="float:left;">
-							<a href="{{recipe}}">{{recipe}}</a>
+						<div>
+							<a href="{{recipe}}">{{key}}</a>
 						</div>
 					</div>
 					<br/>
 				{% endfor %}
 			</div>
+			<br>
 		</div>
 	</body>
 </html>
