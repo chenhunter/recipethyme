@@ -86,7 +86,7 @@ def serialize_ingredients(dict):
 	return str[:-1]
 
 def extract_image_data(item):
-	if item['value'] > 0.7:
+	if item['value'] > 0.75:
 		return item['name']
 	return ''
 
