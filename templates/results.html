@@ -4,6 +4,11 @@
 		<title>RecipeThyme</title>
 		<meta charset='utf-8'>
 		<link rel="stylesheet" type="text/css" href="/assets/style.css"/>
+		<script>
+			function go_back(){
+				window.location = "/";
+			}
+		</script>
 	</head>
 	<body>
 		<div id="contentarea">
@@ -21,7 +26,10 @@
 					<br/>
 				{% endfor %}
 			</div>
-			<br>
+			<hr/>
+			<div>
+				<button onclick="go_back();">New Photo</button>
+			</div>
 		</div>
 	</body>
 </html>
