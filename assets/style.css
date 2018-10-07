@@ -102,3 +102,9 @@ button, #btnAdd, .btnRemove, #btnFind {
 #text {
 	padding: 10px;
 }
+
+#recipes {
+	@media only screen and (max-device-width: 800px) {
+		width: 800px;
+    }
+}
