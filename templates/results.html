@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+	<head>
+		<title>RecipeThyme</title>
+		<meta charset='utf-8'>
+	</head>
+	<body>
+		<div id="contentarea">
+			<h1>
+				Here are your recipes
+			</h1>
+			<div id="items">
+				{% for key,recipe in recipes.items() %}
+					<div id="{{key}}" style="overflow: auto; width: 100vh;">
+						<div style="float:left;">
+							{{key}}
+						</div>
+						<br/>
+						<div style="float:left;">
+							<a href="{{recipe}}">{{recipe}}</a>
+						</div>
+					</div>
+					<br/>
+				{% endfor %}
+			</div>
+		</div>
+	</body>
+</html>

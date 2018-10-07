@@ -1,11 +1,27 @@
 <!doctype html>
 <html>
 	<head>
-		<title>Recipeanut</title>
+		<title>RecipeThyme</title>
 		<meta charset='utf-8'>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script>
-			
+			function submit(){
+				item_divs = document.getElementsByClassName('item');
+				items = {};
+				for (var i = 0; i < item_divs.length; i++){
+					items[i] = item_divs[i].innerHTML;
+				}
+				fetch('/api/search', {
+					method: 'POST',
+					body: JSON.stringify(items),
+					headers: {
+						"Content-Type": "application/json"
+					}
+				}).then(resp => resp.json())
+				.then(respJSON => {
+					window.location = '/results?recipes='+escape(JSON.stringify(respJSON));
+				});
+			}
 		</script>
 	</head>
 	<body>
@@ -15,8 +31,8 @@
 			</h1>
 			<div id="items">
 				{% for key,item in items.items() %}
-					<div id="{{id}}" style="overflow: auto; width: 30vh;">
-						<div style="float:left;">
+					<div id="{{key}}" style="overflow: auto; width: 30vh;">
+						<div class="item" style="float:left;">
 							{{item}}
 						</div>
 						<div style="float:right;">
@@ -31,6 +47,8 @@
 				<input placeholder="Add an ingredient" type="text"></input>
 				<button>Add</button>
 			</div>
+			<hr/>
+			<input type="button" value="Submit" onclick="submit();"></input>
 		</div>
 	</body>
 </html>
